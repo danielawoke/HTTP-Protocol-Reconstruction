@@ -1,24 +1,12 @@
-// Divide into requests and responses
-
-// how do i get a request sent to a server?
-
-// https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview#components_of_http-based_systems
-// HTTP flow section
-// 1 open tcp connection
-// 2 pass the http message through
-// 3 read the response by the server
-// 4 close connection
-
-// "Implmenting FTP in js depends on the enviormnet"
-
-// "the browser first needs the server's IP address. It performs a Domain Name System (DNS) lookup, 
-
-// https://www.youtube.com/watch?v=PS0UppB3-fg DNS server
-// query the local DNS server
-
 const { execSync } = require('child_process');
 const { readFile } = require('fs');
 const fs = require('fs');
+
+function HTTPProtocol(HTTPRequestType,Domain,Paylaod){
+    IP = dnsResolution(Domain);
+    ThreeWayHandshake(IP);
+    
+}
 
 function dnsResolution(domain){
     let outputBuffer = execSync('ipconfig /displaydns');
@@ -76,9 +64,9 @@ function DNSCachedIPsStringToMap(DNSCachedIPsString){
     return DNSCacheMap;
 
 }
-
-function ThreewayHandshake(IPAdress){
-    
+function SYN(){
+    let output = execSync(`sudo hping3 -S -p 80 ${IPAdress}`);
 }
-
-let output = execSync('sudo hping3');
+function ThreewayHandshake(IPAdress){
+    SYN();
+}
